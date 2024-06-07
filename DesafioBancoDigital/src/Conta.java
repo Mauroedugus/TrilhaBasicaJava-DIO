@@ -1,5 +1,7 @@
+import java.util.Scanner;
 
 public abstract class Conta implements IConta {
+	Scanner scanner = new Scanner(System.in);
 	
 	protected static int AGENCIA_PADRAO = 1;
 	
@@ -8,25 +10,32 @@ public abstract class Conta implements IConta {
 	protected int agencia;
 	protected int numero;
 	protected int saldo;
+	protected Cliente cliente;
 
-	public Conta() {
+	public Conta(Cliente cliente) {
 		this.agencia = Conta.AGENCIA_PADRAO;
 		this.numero = SEQUENCIAL++;
 	}
 	
 	@Override
-	public void sacar(double valor) {
+	public void sacar() {
+		System.out.print("Informe o valor que deseja sacar: ");
+		int valor = scanner.nextInt();
 		saldo -= valor;
 		System.out.println();
 	}
 	@Override
-	public void depositar(double valor) {
+	public void depositar() {
+		System.out.print("Informe o valor que deseja depositar: ");
+		int valor = scanner.nextInt();
 		saldo += valor;
 	}
 	@Override
-	public void transferir(double valor, Conta contaDestino) {
-		this.sacar(valor);
-		contaDestino.depositar(valor);
+	public void transferir(Conta contaDestino) {
+		System.out.print("Informe o valor que deseja transferir: ");
+		int valor = scanner.nextInt();
+		this.sacar();
+		contaDestino.saldo =+ valor;
 	}
 	
 	protected void imprimirInfosComuns() {
