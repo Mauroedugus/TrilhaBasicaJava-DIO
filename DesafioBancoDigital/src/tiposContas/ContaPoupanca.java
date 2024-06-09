@@ -1,3 +1,6 @@
+package tiposContas;
+
+import modelos.Cliente;
 
 public class ContaPoupanca extends Conta{
 
@@ -7,8 +10,8 @@ public class ContaPoupanca extends Conta{
 	}
 
 	@Override
-	public void imprimirExtrato() {
-		System.out.println("==Extrato Conta Poupança ===");
+	public void imprimirExtrato(String nomeCliente) {
+		System.out.println("=========Sua Conta Poupança "+ nomeCliente +"=========");
 		super.imprimirInfosComuns();
 	}
 }

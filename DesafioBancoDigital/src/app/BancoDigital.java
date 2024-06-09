@@ -1,5 +1,8 @@
+package app;
 
-public class Main {
+import modelos.Banco;
+
+public class BancoDigital {
 
 	public static void main(String[] args) {
 		Banco bancoDigital = new Banco();

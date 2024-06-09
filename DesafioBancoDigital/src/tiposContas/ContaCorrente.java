@@ -1,3 +1,6 @@
+package tiposContas;
+
+import modelos.Cliente;
 
 public class ContaCorrente extends Conta{
 
@@ -7,8 +10,8 @@ public class ContaCorrente extends Conta{
 	}
 
 	@Override
-	public void imprimirExtrato() {
-		System.out.println("==Extrato Conta Corrente ===");
+	public void imprimirExtrato(String nomeCliente) {
+		System.out.println("=========Sua Conta Poupança "+ nomeCliente +"=========");
 		super.imprimirInfosComuns();
 	}
 	

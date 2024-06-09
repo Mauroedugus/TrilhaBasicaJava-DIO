@@ -1,4 +1,8 @@
+package tiposContas;
 import java.util.Scanner;
+
+import interfaces.IConta;
+import modelos.Cliente;
 
 public abstract class Conta implements IConta {
 	Scanner scanner = new Scanner(System.in);
@@ -8,13 +12,14 @@ public abstract class Conta implements IConta {
 	private static int SEQUENCIAL = 1;
 	
 	protected int agencia;
-	protected int numero;
+	public int numero;
 	protected int saldo;
-	protected Cliente cliente;
+	public Cliente cliente;
 
 	public Conta(Cliente cliente) {
 		this.agencia = Conta.AGENCIA_PADRAO;
 		this.numero = SEQUENCIAL++;
+		this.cliente = cliente;
 	}
 	
 	@Override
@@ -34,11 +39,12 @@ public abstract class Conta implements IConta {
 	public void transferir(Conta contaDestino) {
 		System.out.print("Informe o valor que deseja transferir: ");
 		int valor = scanner.nextInt();
-		this.sacar();
+		this.saldo -= valor;
 		contaDestino.saldo =+ valor;
 	}
 	
 	protected void imprimirInfosComuns() {
+		System.out.println(String.format("Cliente: "+cliente.getNome()));
 		System.out.println(String.format("Agencia: "+agencia));
 		System.out.println(String.format("Conta: "+numero));
 		System.out.println(String.format("Saldo: "+saldo));
